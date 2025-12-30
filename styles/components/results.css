@@ -1,49 +1,91 @@
+/* styles/components/results.css */
 .results {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  margin-top: var(--space-3);
+  margin-top: var(--space-4);
+  position: relative;
 }
 
-.results__divider {
-  border: 0;
-  border-top: 1px solid color-mix(in oklab, var(--c-cyan), black 70%);
-  margin: 0;
+.results__screen {
+  position: relative;
+  overflow: hidden;
 
-  box-shadow: 0 0 0.75rem color-mix(in oklab, var(--c-cyan), transparent 70%),
-    0 0 1.25rem color-mix(in oklab, var(--c-fuchsia), transparent 80%);
-}
+  /* Tamanho Mínimo para impor presença (como no design) */
+  min-height: clamp(8rem, 6rem + 10vw, 12rem);
 
-.results__panel {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  justify-content: center;
+  text-align: center;
 
-  padding: clamp(0.9rem, 0.8rem + 0.7vw, 1.25rem);
+  /* Fundo escuro profundo */
+  background-color: color-mix(in oklab, black, var(--c-bg) 40%);
+  border: 1px solid color-mix(in oklab, var(--c-surface-2), black 20%);
   border-radius: var(--radius-2);
 
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--c-bg), white 6%),
-    var(--c-bg)
+  /* Sombra Interna Profunda (O "buraco" da tela) */
+  box-shadow: inset 0 0 2rem black;
+}
+
+/* O Grid Cyberpunk (A mágica visual) */
+.results__screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.15; /* Bem sutil */
+
+  /* Cria os quadradinhos do grid usando gradientes */
+  background-image: linear-gradient(var(--c-cyan) 1px, transparent 1px),
+    linear-gradient(90deg, var(--c-cyan) 1px, transparent 1px);
+  background-size: 20px 20px;
+
+  /* Máscara para o grid sumir nas bordas (Vignette suave) */
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 40%,
+    transparent 100%
   );
-
-  border: 1px solid color-mix(in oklab, var(--c-cyan), black 70%);
 }
 
-.results__icon {
-  inline-size: clamp(1.15rem, 1rem + 0.7vw, 1.6rem);
-  aspect-ratio: 1 / 1;
-  border-radius: clamp(0.35rem, 0.3rem + 0.25vw, 0.55rem);
-
-  background: color-mix(in oklab, var(--c-surface-2), black 20%);
-  border: 1px solid color-mix(in oklab, var(--c-muted), black 55%);
+.results__content {
+  position: relative;
+  z-index: 2; /* Fica acima do grid */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
 }
 
-.results__text {
+.results__placeholder {
+  font-family: var(--ff-pixel);
+  font-size: clamp(2.5rem, 2rem + 3vw, 4rem);
+  line-height: 1;
+
+  /* Cor escura (desligado/apagado) */
+  color: color-mix(in oklab, var(--c-surface-2), black 10%);
+
+  /* Texto não selecionável */
+  user-select: none;
+}
+
+.results__status {
   margin: 0;
-  font-size: clamp(0.95rem, 0.9rem + 0.45vw, 1.15rem);
-  letter-spacing: 0.08em;
+  font-family: var(--ff-base);
+  font-size: clamp(0.7rem, 0.6rem + 0.3vw, 0.85rem);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--c-text);
+
+  /* Efeito de texto piscando */
+  color: color-mix(in oklab, var(--c-fuchsia), transparent 50%);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }

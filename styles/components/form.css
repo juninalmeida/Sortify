@@ -106,14 +106,18 @@
 
   padding: clamp(0.75rem, 0.65rem + 0.6vw, 1rem);
   border-radius: var(--radius-1);
-
-  background: color-mix(in oklab, var(--c-surface), black 10%);
-  border: 1px solid color-mix(in oklab, var(--c-muted), black 55%);
+  background: color-mix(in oklab, var(--c-surface), black 20%);
+  border: 1px solid color-mix(in oklab, var(--c-muted), black 60%);
 }
 
 .toggle__label {
   font-size: clamp(0.85rem, 0.8rem + 0.35vw, 1.05rem);
   color: var(--c-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .toggle__input {
@@ -126,48 +130,43 @@
   overflow: hidden;
   position: absolute;
 }
-
 .toggle__label::after {
   content: "";
-  inline-size: clamp(3rem, 2.6rem + 1.2vw, 3.8rem);
-  aspect-ratio: 2.1 / 1;
-  border-radius: 999rem;
+  width: 3.2rem;
+  height: 1.6rem;
+  border-radius: 99rem;
 
-  background: color-mix(in oklab, var(--c-muted), black 70%);
-  border: 1px solid color-mix(in oklab, var(--c-muted), black 55%);
+  background: black;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--c-surface-2);
 
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: var(--space-2);
-
-  box-shadow: 0 0 0.85rem transparent;
-  transition: filter 160ms ease, box-shadow 160ms ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .toggle__label::before {
   content: "";
-  inline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.55rem);
-  aspect-ratio: 1 / 1;
-  border-radius: 999rem;
+  position: absolute;
+  right: clamp(2.3rem, 2.2rem + 0.5vw, 2.5rem);
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
 
-  background: color-mix(in oklab, white, black 20%);
-  border: 1px solid color-mix(in oklab, var(--c-muted), black 60%);
+  background: linear-gradient(180deg, #e2e8f0, #94a3b8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 
-  display: inline-block;
-  vertical-align: middle;
-
-  transform: translateX(clamp(0.2rem, 0.15rem + 0.2vw, 0.3rem));
-  transition: transform 180ms ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .toggle__input:checked + .toggle__label::after {
-  background: color-mix(in oklab, var(--c-lime), black 30%);
-  border-color: color-mix(in oklab, var(--c-lime), black 55%);
-  box-shadow: 0 0 1.25rem color-mix(in oklab, var(--c-lime), transparent 55%);
+  background: var(--c-lime);
+  border-color: var(--c-lime);
+
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 15px var(--c-lime);
 }
 
 .toggle__input:checked + .toggle__label::before {
-  transform: translateX(clamp(1.55rem, 1.3rem + 1vw, 2.05rem));
+  transform: translateX(1.6rem);
 }
 
 .toggle__input:focus-visible + .toggle__label {

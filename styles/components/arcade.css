@@ -88,10 +88,9 @@
   border-radius: calc(var(--radius-2) - 0.25rem);
   background: linear-gradient(
     180deg,
-    color-mix(in oklab, var(--c-bg), white 6%),
+    color-mix(in oklab, var(--c-bg), black 20%),
     var(--c-bg)
   );
-  border: 1px solid color-mix(in oklab, var(--c-cyan), black 70%);
   overflow: hidden;
   display: flex;
   flex-direction: column;

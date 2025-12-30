@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-3);
+  position: relative;
+  z-index: 1;
 }
 
 .container {
@@ -14,36 +16,32 @@
 .page {
   position: relative;
   overflow-x: hidden;
+  background-color: var(--c-bg);
 }
 
 .page__fx {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 0;
 
   background: radial-gradient(
-      closest-side,
-      color-mix(in oklab, var(--c-fuchsia), transparent 80%),
-      transparent 70%
+      circle at 10% 20%,
+      color-mix(in oklab, var(--c-fuchsia), transparent 90%),
+      transparent 40%
     ),
     radial-gradient(
-      closest-side,
-      color-mix(in oklab, var(--c-cyan), transparent 85%),
-      transparent 70%
+      circle at 90% 80%,
+      color-mix(in oklab, var(--c-cyan), transparent 92%),
+      transparent 40%
     ),
     repeating-linear-gradient(
       135deg,
-      hsl(0 0% 100% / 0.05) 0,
-      hsl(0 0% 100% / 0.05) 1px,
+      transparent 0,
       transparent 2px,
-      transparent 10px
+      rgba(0, 0, 0, 0.3) 3px,
+      rgba(0, 0, 0, 0.3) 4px
     );
 
-  opacity: 0.75;
-  z-index: 0;
-}
-
-.app {
-  position: relative;
-  z-index: 1;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
 }

@@ -1,81 +1,113 @@
+/* styles/components/button.css */
+
+/* Animação do Texto Pulsando */
+@keyframes pulse-fade {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
 .btn {
   inline-size: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
+  gap: var(--space-3); /* Espaço maior entre texto e ícone */
 
-  padding: clamp(0.8rem, 0.5rem + 1vw, 1.2rem);
+  padding-block: clamp(1rem, 0.8rem + 1vw, 1.25rem);
+  padding-inline: clamp(1rem, 0.5rem + 1vw, 1.5rem);
 
-  white-space: nowrap;
+  /* DIAGRAMAÇÃO DE TEXTO */
+  white-space: normal; /* Permite quebrar linha */
+  text-align: center; /* Centraliza o bloco de texto */
+  line-height: 1.2; /* Altura de linha compacta */
+
+  font-family: var(--ff-base);
+  font-size: clamp(0.85rem, 0.75rem + 0.5vw, 1.1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 
   border-radius: var(--radius-2);
   border: 1px solid transparent;
   background: transparent;
-  font-family: var(--ff-base);
-  font-size: clamp(0.85rem, 0.75rem + 0.5vw, 1.1rem);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--c-text);
   cursor: pointer;
+  position: relative; /* Necessário para overlays */
+
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn--primary {
-  position: relative;
-  overflow: hidden;
-
   font-family: var(--ff-pixel);
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--c-fuchsia), white 10%),
-    color-mix(in oklab, var(--c-fuchsia), black 25%)
-  );
+  font-size: clamp(0.7rem, 0.6rem + 0.5vw, 0.9rem);
 
-  border-color: color-mix(in oklab, var(--c-fuchsia), black 55%);
+  /* FUNDO + TEXTURA (O Segredo do visual Aura) */
+  background-color: var(--c-fuchsia); /* Fallback */
+  background-image: 
+    /* 1. As linhas finas (Scanlines) */ repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      rgba(0, 0, 0, 0.2) 3px
+    ),
+    /* 2. O Gradiente Vertical */
+      linear-gradient(
+        to bottom,
+        var(--c-fuchsia),
+        color-mix(in oklab, var(--c-fuchsia), black 30%)
+      );
 
-  box-shadow: 0 0 1.25rem color-mix(in oklab, var(--c-fuchsia), transparent 55%),
-    0 0 2.25rem color-mix(in oklab, var(--c-fuchsia), transparent 75%);
-}
+  /* Borda Superior muito mais sutil (sem estourar branco) */
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-left: 0;
+  border-right: 0;
 
-.btn--primary::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+  /* Sombra: Usando cor Pura (HSL) com transparência, sem mistura de branco */
+  box-shadow: 0 0 1.5rem hsl(292 84% 60% / 0.4);
 
-  background: repeating-linear-gradient(
-    180deg,
-    hsl(0 0% 100% / 0.08) 0,
-    hsl(0 0% 100% / 0.08) 1px,
-    transparent 2px,
-    transparent 6px
-  );
-
-  opacity: 0.65;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Legibilidade */
 }
 
 .btn--primary:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.1); /* Brilho leve no hover */
+  box-shadow: 0 0 2rem hsl(292 84% 60% / 0.6); /* Glow mais forte */
 }
 
 .btn--primary:active {
-  filter: brightness(0.98);
+  transform: translateY(2px);
+  filter: brightness(0.95);
+  box-shadow: 0 0 0.5rem hsl(292 84% 60% / 0.4);
 }
 
+.btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Ícone Grande e Estável */
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
+
+.btn__text {
+  animation: pulse-fade 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Foco Acessível */
 .btn:focus-visible {
   outline: 2px solid color-mix(in oklab, var(--c-cyan), white 15%);
   outline-offset: 0.25rem;
 }
 
 .btn[disabled] {
+  filter: grayscale(1) opacity(0.5);
   cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.btn__icon {
-  display: flex;
-  align-items: center;
-  width: 1.25em;
-  height: 1.25em;
-  color: white;
+  animation: none;
 }

@@ -34,3 +34,61 @@
   font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.9rem);
   color: var(--c-muted);
 }
+
+.sort-form__control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding: clamp(0.75rem, 0.65rem + 0.6vw, 1rem);
+  border-radius: var(--radius-1);
+
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--c-bg), white 5%),
+    var(--c-bg)
+  );
+
+  border: 1px solid color-mix(in oklab, var(--c-cyan), black 70%);
+}
+
+.sort-form__control:focus-within {
+  box-shadow: 0 0 0.85rem color-mix(in oklab, var(--c-cyan), transparent 55%),
+    0 0 1.25rem color-mix(in oklab, var(--c-fuchsia), transparent 75%);
+}
+
+.sort-form__icon {
+  inline-size: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
+  aspect-ratio: 1 / 1;
+  border-radius: clamp(0.35rem, 0.3rem + 0.25vw, 0.55rem);
+
+  background: color-mix(in oklab, var(--c-surface-2), black 20%);
+  border: 1px solid color-mix(in oklab, var(--c-muted), black 55%);
+}
+
+.sort-form__input {
+  inline-size: 100%;
+  flex: 1;
+
+  background: transparent;
+  border: 0;
+
+  font-family: var(--ff-base);
+  font-size: clamp(0.95rem, 0.9rem + 0.4vw, 1.15rem);
+  color: var(--c-text);
+
+  padding: 0;
+  margin: 0;
+}
+
+.sort-form__input:focus {
+  outline: none;
+}
+
+.sort-form__input::placeholder {
+  color: color-mix(in oklab, var(--c-muted), white 10%);
+}
+
+.sort-form__control .sort-form__input {
+  text-align: right;
+}

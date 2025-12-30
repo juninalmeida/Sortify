@@ -92,3 +92,81 @@
 .sort-form__control .sort-form__input {
   text-align: right;
 }
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+
+  padding: clamp(0.75rem, 0.65rem + 0.6vw, 1rem);
+  border-radius: var(--radius-1);
+
+  background: color-mix(in oklab, var(--c-surface), black 10%);
+  border: 1px solid color-mix(in oklab, var(--c-muted), black 55%);
+}
+
+.toggle__label {
+  font-size: clamp(0.85rem, 0.8rem + 0.35vw, 1.05rem);
+  color: var(--c-text);
+}
+
+.toggle__input {
+  inline-size: 1px;
+  block-size: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+  position: absolute;
+}
+
+.toggle__label::after {
+  content: "";
+  inline-size: clamp(3rem, 2.6rem + 1.2vw, 3.8rem);
+  aspect-ratio: 2.1 / 1;
+  border-radius: 999rem;
+
+  background: color-mix(in oklab, var(--c-muted), black 70%);
+  border: 1px solid color-mix(in oklab, var(--c-muted), black 55%);
+
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: var(--space-2);
+
+  box-shadow: 0 0 0.85rem transparent;
+  transition: filter 160ms ease, box-shadow 160ms ease;
+}
+
+.toggle__label::before {
+  content: "";
+  inline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.55rem);
+  aspect-ratio: 1 / 1;
+  border-radius: 999rem;
+
+  background: color-mix(in oklab, white, black 20%);
+  border: 1px solid color-mix(in oklab, var(--c-muted), black 60%);
+
+  display: inline-block;
+  vertical-align: middle;
+
+  transform: translateX(clamp(0.2rem, 0.15rem + 0.2vw, 0.3rem));
+  transition: transform 180ms ease;
+}
+
+.toggle__input:checked + .toggle__label::after {
+  background: color-mix(in oklab, var(--c-lime), black 30%);
+  border-color: color-mix(in oklab, var(--c-lime), black 55%);
+  box-shadow: 0 0 1.25rem color-mix(in oklab, var(--c-lime), transparent 55%);
+}
+
+.toggle__input:checked + .toggle__label::before {
+  transform: translateX(clamp(1.55rem, 1.3rem + 1vw, 2.05rem));
+}
+
+.toggle__input:focus-visible + .toggle__label {
+  outline: 2px solid color-mix(in oklab, var(--c-cyan), white 15%);
+  outline-offset: 0.25rem;
+  border-radius: var(--radius-1);
+}

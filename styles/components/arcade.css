@@ -41,6 +41,15 @@
   font-size: var(--fs-1);
   letter-spacing: 0.06em;
   margin: 0;
+
+  background: linear-gradient(to bottom, #d946ef 0%, #a21caf 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  filter: drop-shadow(0 2px 4px rgba(217, 70, 239, 0.5));
 }
 
 .arcade__status {
@@ -124,5 +133,3 @@
     );
   opacity: 0.9;
 }
-
-

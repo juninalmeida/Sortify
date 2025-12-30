@@ -5,24 +5,23 @@
   justify-content: center;
   gap: var(--space-2);
 
-  padding: clamp(1rem, 0.85rem + 0.8vw, 1.35rem);
-  border-radius: var(--radius-2);
+  padding: clamp(0.8rem, 0.5rem + 1vw, 1.2rem);
 
+  white-space: nowrap;
+
+  border-radius: var(--radius-2);
   border: 1px solid transparent;
   background: transparent;
-
   font-family: var(--ff-base);
-  font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.2rem);
+  font-size: clamp(0.85rem, 0.75rem + 0.5vw, 1.1rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--c-text);
-
   cursor: pointer;
-  user-select: none;
 }
 
 .btn--primary {
-  position: relative; /* permitido: só pra overlay decorativo */
+  position: relative;
   overflow: hidden;
 
   font-family: var(--ff-pixel);
@@ -44,7 +43,6 @@
   inset: 0;
   pointer-events: none;
 
-  /* scanlines no botão */
   background: repeating-linear-gradient(
     180deg,
     hsl(0 0% 100% / 0.08) 0,
@@ -75,10 +73,9 @@
 }
 
 .btn__icon {
-  inline-size: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
-  aspect-ratio: 1 / 1;
-  border-radius: 999rem;
-
-  border: 1px solid color-mix(in oklab, var(--c-text), black 65%);
-  background: color-mix(in oklab, var(--c-bg), white 8%);
+  display: flex;
+  align-items: center;
+  width: 1.25em;
+  height: 1.25em;
+  color: white;
 }

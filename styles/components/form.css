@@ -64,6 +64,11 @@
 
   background: color-mix(in oklab, var(--c-surface-2), black 20%);
   border: 1px solid color-mix(in oklab, var(--c-muted), black 55%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-cyan);
 }
 
 .sort-form__input {

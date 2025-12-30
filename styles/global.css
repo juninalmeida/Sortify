@@ -15,8 +15,11 @@ svg {
 }
 
 :root {
-  --ff-base: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --ff-base: "Share Tech Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --ff-pixel: "Press Start 2P", ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Arial, sans-serif;
 
   --fs-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
   --fs-1: clamp(1.1rem, 1rem + 0.6vw, 1.6rem);

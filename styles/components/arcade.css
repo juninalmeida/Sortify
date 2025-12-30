@@ -53,15 +53,18 @@
 .arcade__brand {
   font-family: var(--ff-pixel);
   font-size: var(--fs-1);
-  letter-spacing: 0.06em;
+  letter-spacing: -0.05em;
   margin: 0;
 
-  background: linear-gradient(to bottom, #d946ef 0%, #a21caf 100%);
+  background: linear-gradient(to right, #e879f9, #9333ea);
+
   -webkit-background-clip: text;
   background-clip: text;
+
   color: transparent;
 
-  filter: drop-shadow(0 2px 4px rgba(217, 70, 239, 0.5));
+  filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.2))
+    drop-shadow(0 0 5px rgba(217, 70, 239, 0.5));
 }
 
 .arcade__status-text {

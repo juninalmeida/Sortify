@@ -34,10 +34,101 @@
               </ul>
             </header>
 
-            <section
-              class="arcade__screen"
-              aria-label="Tela do arcade"
-            ></section>
+            <section class="arcade__screen" aria-label="Tela do arcade">
+              <form
+                class="sort-form"
+                aria-label="Configurar sorteio"
+                novalidate
+              >
+                <div class="sort-form__field">
+                  <label class="sort-form__label" for="quantity">
+                    <span class="sort-form__label-prefix" aria-hidden="true"
+                      >#</span
+                    >
+                    Quantidade (QTD)
+                  </label>
+
+                  <div class="sort-form__control">
+                    <span class="sort-form__icon" aria-hidden="true"></span>
+
+                    <input
+                      class="sort-form__input"
+                      id="quantity"
+                      name="quantity"
+                      type="number"
+                      inputmode="numeric"
+                      min="1"
+                      step="1"
+                      value="1"
+                      aria-describedby="quantity-hint"
+                    />
+                  </div>
+
+                  <p class="sort-form__hint" id="quantity-hint">
+                    Defina quantos números serão gerados.
+                  </p>
+                </div>
+
+                <div
+                  class="sort-form__row"
+                  role="group"
+                  aria-label="Intervalo de números"
+                >
+                  <div class="sort-form__field">
+                    <label class="sort-form__label" for="min"> Min (de) </label>
+
+                    <div class="sort-form__control">
+                      <span class="sort-form__icon" aria-hidden="true"></span>
+
+                      <input
+                        class="sort-form__input"
+                        id="min"
+                        name="min"
+                        type="number"
+                        inputmode="numeric"
+                        value="1"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="sort-form__field">
+                    <label class="sort-form__label" for="max">
+                      Max (até)
+                    </label>
+
+                    <div class="sort-form__control">
+                      <span class="sort-form__icon" aria-hidden="true"></span>
+
+                      <input
+                        class="sort-form__input"
+                        id="max"
+                        name="max"
+                        type="number"
+                        inputmode="numeric"
+                        value="100"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="toggle">
+                  <input
+                    class="toggle__input"
+                    id="unique"
+                    name="unique"
+                    type="checkbox"
+                  />
+                  <label class="toggle__label" for="unique">
+                    Não repetir números
+                  </label>
+                </div>
+
+                <button class="btn btn--primary" type="submit">
+                  INSERT COIN TO SORT
+                  <span class="btn__icon" aria-hidden="true"></span>
+                </button>
+              </form>
+            </section>
           </article>
         </section>
       </div>

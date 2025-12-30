@@ -1,13 +1,24 @@
 .arcade__cabinet {
-  background: linear-gradient(
- encourage,
-    var(--c-surface),
-    var(--c-surface-2)
-  );
+  background: linear-gradient(180deg, var(--c-surface), var(--c-surface-2));
   border: var(--border-1);
   border-radius: var(--radius-2);
   box-shadow: var(--shadow-1);
   overflow: hidden;
+  position: relative;
+  isolation: isolate;
+}
+
+.arcade__cabinet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  box-shadow: 0 0 0.75rem color-mix(in oklab, var(--c-cyan), transparent 55%),
+    0 0 1.5rem color-mix(in oklab, var(--c-fuchsia), transparent 70%);
+  opacity: 0.9;
+  z-index: -1;
 }
 
 .arcade__header {
@@ -57,4 +68,50 @@
 
 .arcade__screen {
   padding: var(--space-3);
+  position: relative;
+  min-block-size: clamp(12rem, 9rem + 10vw, 20rem);
+  border-radius: calc(var(--radius-2) - 0.25rem);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--c-bg), white 6%),
+    var(--c-bg)
+  );
+  border: 1px solid color-mix(in oklab, var(--c-cyan), black 70%);
+  overflow: hidden;
+}
+
+.arcade__screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    hsl(0 0% 100% / 0.04) 0,
+    hsl(0 0% 100% / 0.04) 1px,
+    transparent 2px,
+    transparent 6px
+  );
+
+  opacity: 0.7;
+}
+
+.arcade__screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: radial-gradient(
+      closest-side,
+      transparent 55%,
+      hsl(0 0% 0% / 0.55) 100%
+    ),
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      hsl(0 0% 100% / 0.08) 35%,
+      transparent 70%
+    );
+  opacity: 0.9;
 }

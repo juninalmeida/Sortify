@@ -1,0 +1,49 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.results__divider {
+  border: 0;
+  border-top: 1px solid color-mix(in oklab, var(--c-cyan), black 70%);
+  margin: 0;
+
+  box-shadow: 0 0 0.75rem color-mix(in oklab, var(--c-cyan), transparent 70%),
+    0 0 1.25rem color-mix(in oklab, var(--c-fuchsia), transparent 80%);
+}
+
+.results__panel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding: clamp(0.9rem, 0.8rem + 0.7vw, 1.25rem);
+  border-radius: var(--radius-2);
+
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--c-bg), white 6%),
+    var(--c-bg)
+  );
+
+  border: 1px solid color-mix(in oklab, var(--c-cyan), black 70%);
+}
+
+.results__icon {
+  inline-size: clamp(1.15rem, 1rem + 0.7vw, 1.6rem);
+  aspect-ratio: 1 / 1;
+  border-radius: clamp(0.35rem, 0.3rem + 0.25vw, 0.55rem);
+
+  background: color-mix(in oklab, var(--c-surface-2), black 20%);
+  border: 1px solid color-mix(in oklab, var(--c-muted), black 55%);
+}
+
+.results__text {
+  margin: 0;
+  font-size: clamp(0.95rem, 0.9rem + 0.45vw, 1.15rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text);
+}

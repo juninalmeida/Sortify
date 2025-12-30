@@ -1,0 +1,60 @@
+.arcade__cabinet {
+  background: linear-gradient(
+ encourage,
+    var(--c-surface),
+    var(--c-surface-2)
+  );
+  border: var(--border-1);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+
+.arcade__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-bottom: var(--border-1);
+}
+
+.arcade__brand {
+  font-family: var(--ff-base);
+  font-size: var(--fs-1);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.arcade__status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.arcade__status-text {
+  margin: 0;
+  font-size: var(--fs-0);
+  color: var(--c-muted);
+}
+
+.arcade__leds {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.arcade__led {
+  width: clamp(0.5rem, 0.45rem + 0.25vw, 0.7rem);
+  aspect-ratio: 1 / 1;
+  border-radius: 999rem;
+  background: var(--c-lime);
+  border: 1px solid color-mix(in oklab, var(--c-lime), black 35%);
+}
+
+.arcade__screen {
+  padding: var(--space-3);
+}

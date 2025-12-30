@@ -23,122 +23,32 @@
           <h1 class="sr-only">Sortify</h1>
 
           <article class="arcade__cabinet">
-            <header class="arcade__header" aria-label="Status do sistema">
-              <div class="arcade__title">
-                <p class="arcade__brand" aria-hidden="true">SORTIFY</p>
-                <p class="arcade__status-text">SYSTEM READY</p>
-              </div>
-
-              <ul class="arcade__leds" aria-label="Indicadores de status">
-                <li class="arcade__led" aria-hidden="true"></li>
-                <li class="arcade__led" aria-hidden="true"></li>
-                <li class="arcade__led" aria-hidden="true"></li>
-              </ul>
-            </header>
-
-            <section class="arcade__screen" aria-label="Tela do arcade">
-              <form
-                class="sort-form"
-                aria-label="Configurar sorteio"
-                novalidate
-              >
-                <div class="sort-form__field">
-                  <label class="sort-form__label" for="quantity">
-                    <span class="sort-form__label-prefix" aria-hidden="true"
-                      >#</span
-                    >
-                    Quantidade (QTD)
-                  </label>
-
-                  <div class="sort-form__control">
-                    <span class="sort-form__icon" aria-hidden="true">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                        <polyline points="2 17 12 22 22 17" />
-                        <polyline points="2 12 12 17 22 12" />
-                      </svg>
-                    </span>
-
-                    <input
-                      class="sort-form__input"
-                      id="quantity"
-                      name="quantity"
-                      type="number"
-                      inputmode="numeric"
-                      min="1"
-                      step="1"
-                      value="1"
-                      aria-describedby="quantity-hint"
-                    />
-                  </div>
-
-                  <p class="sort-form__hint" id="quantity-hint">
-                    Defina quantos números serão gerados.
-                  </p>
+            <div class="arcade__panel">
+              <header class="arcade__header" aria-label="Status do sistema">
+                <div class="arcade__title">
+                  <p class="arcade__brand" aria-hidden="true">SORTIFY</p>
+                  <p class="arcade__status-text">SYSTEM READY</p>
                 </div>
 
-                <div
-                  class="sort-form__row"
-                  role="group"
-                  aria-label="Intervalo de números"
+                <ul class="arcade__leds" aria-label="Indicadores de status">
+                  <li class="arcade__led" aria-hidden="true"></li>
+                  <li class="arcade__led" aria-hidden="true"></li>
+                  <li class="arcade__led" aria-hidden="true"></li>
+                </ul>
+              </header>
+
+              <section class="arcade__screen" aria-label="Tela do arcade">
+                <form
+                  class="sort-form"
+                  aria-label="Configurar sorteio"
+                  novalidate
                 >
                   <div class="sort-form__field">
-                    <label class="sort-form__label" for="min"> Min (de) </label>
-
-                    <div class="sort-form__control">
-                      <span class="sort-form__icon" aria-hidden="true">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path d="M3 12h18" />
-                          <path
-                            d="M15 6l6 12-6 6"
-                            stroke-opacity="0"
-                            transform="translate(-1000)"
-                          />
-                          <polyline points="13 19 20 12 13 5" />
-                          <line
-                            x1="4"
-                            y1="12"
-                            x2="4"
-                            y2="12"
-                            stroke-width="4"
-                          />
-                        </svg>
-                      </span>
-
-                      <input
-                        class="sort-form__input"
-                        id="min"
-                        name="min"
-                        type="number"
-                        inputmode="numeric"
-                        value="1"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="sort-form__field">
-                    <label class="sort-form__label" for="max">
-                      Max (até)
+                    <label class="sort-form__label" for="quantity">
+                      <span class="sort-form__label-prefix" aria-hidden="true"
+                        >#</span
+                      >
+                      Quantidade (QTD)
                     </label>
 
                     <div class="sort-form__control">
@@ -154,84 +64,178 @@
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         >
-                          <path d="M3 12h18" />
-                          <path
-                            d="M15 6l6 12-6 6"
-                            stroke-opacity="0"
-                            transform="translate(-1000)"
-                          />
-                          <polyline points="13 19 20 12 13 5" />
-                          <line
-                            x1="4"
-                            y1="12"
-                            x2="4"
-                            y2="12"
-                            stroke-width="4"
-                          />
+                          <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                          <polyline points="2 17 12 22 22 17" />
+                          <polyline points="2 12 12 17 22 12" />
                         </svg>
                       </span>
 
                       <input
                         class="sort-form__input"
-                        id="max"
-                        name="max"
+                        id="quantity"
+                        name="quantity"
                         type="number"
                         inputmode="numeric"
-                        value="100"
+                        min="1"
+                        step="1"
+                        value="1"
+                        aria-describedby="quantity-hint"
                       />
                     </div>
+
+                    <p class="sort-form__hint" id="quantity-hint">
+                      Defina quantos números serão gerados.
+                    </p>
                   </div>
-                </div>
 
-                <div class="toggle">
-                  <input
-                    class="toggle__input"
-                    id="unique"
-                    name="unique"
-                    type="checkbox"
-                  />
-                  <label class="toggle__label" for="unique">
-                    Não repetir números
-                  </label>
-                </div>
+                  <div
+                    class="sort-form__row"
+                    role="group"
+                    aria-label="Intervalo de números"
+                  >
+                    <div class="sort-form__field">
+                      <label class="sort-form__label" for="min">
+                        Min (de)
+                      </label>
 
-                <button class="btn btn--primary" type="submit">
-                  <span class="btn__text"> Insert Coin to<br />Sort </span>
+                      <div class="sort-form__control">
+                        <span class="sort-form__icon" aria-hidden="true">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M3 12h18" />
+                            <path
+                              d="M15 6l6 12-6 6"
+                              stroke-opacity="0"
+                              transform="translate(-1000)"
+                            />
+                            <polyline points="13 19 20 12 13 5" />
+                            <line
+                              x1="4"
+                              y1="12"
+                              x2="4"
+                              y2="12"
+                              stroke-width="4"
+                            />
+                          </svg>
+                        </span>
 
-                  <span class="btn__icon" aria-hidden="true">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <circle cx="8" cy="8" r="6"></circle>
-                      <path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path>
-                      <path d="M7 6h1v4"></path>
-                      <path d="m16.71 13.88.7.71-2.82 2.82"></path>
-                    </svg>
-                  </span>
-                </button>
+                        <input
+                          class="sort-form__input"
+                          id="min"
+                          name="min"
+                          type="number"
+                          inputmode="numeric"
+                          value="1"
+                        />
+                      </div>
+                    </div>
 
-                <div
-                  class="results"
-                  aria-live="polite"
-                  aria-label="Resultados do sorteio"
-                >
-                  <div class="results__screen">
-                    <div class="results__content">
-                      <span class="results__placeholder">00</span>
-                      <p class="results__status">WAITING FOR PLAYER...</p>
+                    <div class="sort-form__field">
+                      <label class="sort-form__label" for="max">
+                        Max (até)
+                      </label>
+
+                      <div class="sort-form__control">
+                        <span class="sort-form__icon" aria-hidden="true">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M3 12h18" />
+                            <path
+                              d="M15 6l6 12-6 6"
+                              stroke-opacity="0"
+                              transform="translate(-1000)"
+                            />
+                            <polyline points="13 19 20 12 13 5" />
+                            <line
+                              x1="4"
+                              y1="12"
+                              x2="4"
+                              y2="12"
+                              stroke-width="4"
+                            />
+                          </svg>
+                        </span>
+
+                        <input
+                          class="sort-form__input"
+                          id="max"
+                          name="max"
+                          type="number"
+                          inputmode="numeric"
+                          value="100"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </form>
-            </section>
+
+                  <div class="toggle">
+                    <input
+                      class="toggle__input"
+                      id="unique"
+                      name="unique"
+                      type="checkbox"
+                    />
+                    <label class="toggle__label" for="unique">
+                      Não repetir números
+                    </label>
+                  </div>
+
+                  <button class="btn btn--primary" type="submit">
+                    <span class="btn__text"> Insert Coin to<br />Sort </span>
+
+                    <span class="btn__icon" aria-hidden="true">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <circle cx="8" cy="8" r="6"></circle>
+                        <path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path>
+                        <path d="M7 6h1v4"></path>
+                        <path d="m16.71 13.88.7.71-2.82 2.82"></path>
+                      </svg>
+                    </span>
+                  </button>
+
+                  <div
+                    class="results"
+                    aria-live="polite"
+                    aria-label="Resultados do sorteio"
+                  >
+                    <div class="results__screen">
+                      <div class="results__content">
+                        <span class="results__placeholder">00</span>
+                        <p class="results__status">WAITING FOR PLAYER...</p>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </section>
+            </div>
           </article>
         </section>
       </div>

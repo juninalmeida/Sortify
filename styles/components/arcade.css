@@ -1,24 +1,36 @@
 .arcade__cabinet {
-  background: linear-gradient(180deg, var(--c-surface), var(--c-surface-2));
-  border: var(--border-1);
-  border-radius: var(--radius-2);
-  box-shadow: var(--shadow-1);
-  overflow: hidden;
   position: relative;
   isolation: isolate;
+  overflow: hidden;
+
+  border: 4px solid var(--c-surface-2);
+  border-radius: var(--radius-2);
+
+  padding: 0.25rem;
+
+  background-color: color-mix(in oklab, var(--c-surface), transparent 10%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.arcade__cabinet::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
+.arcade__panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
-  box-shadow: 0 0 0.75rem color-mix(in oklab, var(--c-cyan), transparent 55%),
-    0 0 1.5rem color-mix(in oklab, var(--c-fuchsia), transparent 70%);
-  opacity: 0.9;
-  z-index: -1;
+  border: 2px solid color-mix(in oklab, var(--c-cyan), transparent 50%);
+
+  border-radius: calc(var(--radius-2) - 0.25rem);
+
+  background-color: color-mix(in oklab, var(--c-bg), transparent 20%);
+
+  box-shadow: 0 0 15px color-mix(in oklab, var(--c-cyan), transparent 80%),
+    inset 0 0 10px color-mix(in oklab, var(--c-cyan), transparent 90%);
+
+  padding: var(--space-3);
+  gap: var(--space-3);
 }
 
 .arcade__header {
@@ -26,8 +38,10 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-2);
-  padding: var(--space-3);
-  border-bottom: var(--border-1);
+
+  border-bottom: 1px solid color-mix(in oklab, var(--c-cyan), transparent 85%);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-1);
 }
 
 .arcade__title {
@@ -43,25 +57,22 @@
   margin: 0;
 
   background: linear-gradient(to bottom, #d946ef 0%, #a21caf 100%);
-
   -webkit-background-clip: text;
   background-clip: text;
-
   color: transparent;
 
   filter: drop-shadow(0 2px 4px rgba(217, 70, 239, 0.5));
-}
-
-.arcade__status {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
 }
 
 .arcade__status-text {
   margin: 0;
   font-size: var(--fs-0);
   color: var(--c-muted);
+  font-family: var(--ff-base);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  opacity: 0.8;
 }
 
 .arcade__leds {
@@ -69,66 +80,39 @@
   align-items: center;
   gap: var(--space-1);
   list-style: none;
-  padding-top: clamp(0.35rem, 0.2rem + 0.8vw, 0.85rem);
+  padding-top: 0.5rem;
   margin: 0;
 }
 
 .arcade__led {
-  width: clamp(0.5rem, 0.45rem + 0.25vw, 0.7rem);
-  aspect-ratio: 1 / 1;
-  border-radius: 999rem;
-  background: var(--c-lime);
-  border: 1px solid color-mix(in oklab, var(--c-lime), black 35%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+
+  background-color: var(--c-lime);
+  box-shadow: 0 0 8px var(--c-lime);
+}
+.arcade__led:nth-child(1) {
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  animation: pulse 2s infinite;
+}
+.arcade__led:nth-child(2) {
+  background: #eab308;
+  box-shadow: 0 0 8px #eab308;
+}
+.arcade__led:nth-child(3) {
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
 }
 
 .arcade__screen {
-  padding: var(--space-3);
   position: relative;
-  min-block-size: clamp(12rem, 9rem + 10vw, 20rem);
-  border-radius: calc(var(--radius-2) - 0.25rem);
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--c-bg), black 20%),
-    var(--c-bg)
-  );
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 }
 
 .arcade__screen::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    180deg,
-    hsl(0 0% 100% / 0.04) 0,
-    hsl(0 0% 100% / 0.04) 1px,
-    transparent 2px,
-    transparent 6px
-  );
-
-  opacity: 0.7;
-}
-
-.arcade__screen::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-
-  background: radial-gradient(
-      closest-side,
-      transparent 55%,
-      hsl(0 0% 0% / 0.55) 100%
-    ),
-    linear-gradient(
-      120deg,
-      transparent 0%,
-      hsl(0 0% 100% / 0.08) 35%,
-      transparent 70%
-    );
-  opacity: 0.9;
+  content: none;
 }

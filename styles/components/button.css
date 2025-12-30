@@ -1,0 +1,84 @@
+.btn {
+  inline-size: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  padding: clamp(1rem, 0.85rem + 0.8vw, 1.35rem);
+  border-radius: var(--radius-2);
+
+  border: 1px solid transparent;
+  background: transparent;
+
+  font-family: var(--ff-base);
+  font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.2rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text);
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn--primary {
+  position: relative; /* permitido: só pra overlay decorativo */
+  overflow: hidden;
+
+  font-family: var(--ff-pixel);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--c-fuchsia), white 10%),
+    color-mix(in oklab, var(--c-fuchsia), black 25%)
+  );
+
+  border-color: color-mix(in oklab, var(--c-fuchsia), black 55%);
+
+  box-shadow: 0 0 1.25rem color-mix(in oklab, var(--c-fuchsia), transparent 55%),
+    0 0 2.25rem color-mix(in oklab, var(--c-fuchsia), transparent 75%);
+}
+
+.btn--primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  /* scanlines no botão */
+  background: repeating-linear-gradient(
+    180deg,
+    hsl(0 0% 100% / 0.08) 0,
+    hsl(0 0% 100% / 0.08) 1px,
+    transparent 2px,
+    transparent 6px
+  );
+
+  opacity: 0.65;
+}
+
+.btn--primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn--primary:active {
+  filter: brightness(0.98);
+}
+
+.btn:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--c-cyan), white 15%);
+  outline-offset: 0.25rem;
+}
+
+.btn[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn__icon {
+  inline-size: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
+  aspect-ratio: 1 / 1;
+  border-radius: 999rem;
+
+  border: 1px solid color-mix(in oklab, var(--c-text), black 65%);
+  background: color-mix(in oklab, var(--c-bg), white 8%);
+}

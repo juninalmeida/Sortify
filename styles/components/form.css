@@ -58,11 +58,6 @@
   width: 100%;
 }
 
-.sort-form__control:focus-within {
-  box-shadow: 0 0 0.85rem color-mix(in oklab, var(--c-cyan), transparent 55%),
-    0 0 1.25rem color-mix(in oklab, var(--c-fuchsia), transparent 75%);
-}
-
 .sort-form__icon {
   position: absolute;
   left: 1rem;
@@ -95,7 +90,11 @@
 
   background-color: color-mix(in oklab, var(--c-surface), black 40%);
   border: 2px solid color-mix(in oklab, var(--c-surface-2), white 5%);
+
   border-radius: var(--radius-1);
+
+  appearance: none;
+  -webkit-appearance: none;
 
   color: var(--c-cyan);
   text-align: right;
@@ -105,15 +104,10 @@
 
 .sort-form__input:focus {
   outline: none;
-  border-color: var(--c-cyan);
+  border-color: color-mix(in oklab, var(--c-cyan), transparent 20%);
 
-  box-shadow: 0 0 15px color-mix(in oklab, var(--c-cyan), transparent 60%);
-}
-
-.sort-form__input::-webkit-outer-spin-button,
-.sort-form__input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  box-shadow: inset 0 0 12px color-mix(in oklab, var(--c-cyan), transparent 90%),
+    0 0 15px color-mix(in oklab, var(--c-cyan), transparent 80%);
 }
 
 .sort-form__input[type="number"] {
@@ -234,7 +228,8 @@
 }
 
 .sort-form__input--lime:focus {
-  border-color: var(--c-lime);
+  border-color: color-mix(in oklab, var(--c-lime), transparent 20%);
 
-  box-shadow: 0 0 15px color-mix(in oklab, var(--c-lime), transparent 60%);
+  box-shadow: inset 0 0 12px color-mix(in oklab, var(--c-lime), transparent 90%),
+    0 0 15px color-mix(in oklab, var(--c-lime), transparent 80%);
 }

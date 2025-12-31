@@ -19,29 +19,21 @@
   background-color: var(--c-bg);
 }
 
-.page__fx {
+.page__background {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+
   z-index: 0;
+  pointer-events: none;
 
-  background: radial-gradient(
-      circle at 10% 20%,
-      color-mix(in oklab, var(--c-fuchsia), transparent 90%),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      color-mix(in oklab, var(--c-cyan), transparent 92%),
-      transparent 40%
-    ),
-    repeating-linear-gradient(
-      135deg,
-      transparent 0,
-      transparent 2px,
-      rgba(0, 0, 0, 0.3) 3px,
-      rgba(0, 0, 0, 0.3) 4px
-    );
+  opacity: 0.6;
+}
 
-  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+.page__background-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }

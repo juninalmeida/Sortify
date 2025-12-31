@@ -131,3 +131,48 @@
 .arcade__screen::before {
   content: none;
 }
+
+.arcade__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: var(--space-3);
+
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+  cursor: default;
+}
+
+.arcade__footer:hover {
+  opacity: 1;
+}
+
+.arcade__footer-deco {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.arcade__footer-bar {
+  height: 0.25rem;
+  border-radius: 99rem;
+
+  background-color: color-mix(in oklab, var(--c-muted), black 30%);
+}
+
+.arcade__footer-bar--long {
+  width: 2rem;
+}
+
+.arcade__footer-bar--short {
+  width: 0.5rem;
+}
+
+.arcade__footer-text {
+  font-family: var(--ff-base);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  color: var(--c-muted);
+}

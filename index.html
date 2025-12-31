@@ -120,6 +120,7 @@
                         type="number"
                         inputmode="numeric"
                         min="1"
+                        max="100"
                         step="1"
                         value="1"
                         aria-describedby="quantity-hint"
@@ -153,14 +154,14 @@
                             stroke-linecap="round"
                             stroke-linejoin="round"
                           >
-                            <path d="M3 12h18"></path>
-                            <path d="M9 6l-6 6 6 6"></path>
-                            <line x1="21" y1="6" x2="21" y2="18"></line>
+                            <line x1="5" y1="6" x2="5" y2="18"></line>
+                            <line x1="9" y1="12" x2="19" y2="12"></line>
+                            <polyline points="15 8 19 12 15 16"></polyline>
                           </svg>
                         </span>
 
                         <input
-                          class="sort-form__input"
+                          class="sort-form__input sort-form__input--lime"
                           id="min"
                           name="min"
                           type="number"
@@ -191,14 +192,14 @@
                             stroke-linecap="round"
                             stroke-linejoin="round"
                           >
-                            <path d="M21 12H3"></path>
-                            <path d="M15 6l6 6-6 6"></path>
-                            <line x1="3" y1="6" x2="3" y2="18"></line>
+                            <line x1="19" y1="6" x2="19" y2="18"></line>
+                            <line x1="5" y1="12" x2="15" y2="12"></line>
+                            <polyline points="11 8 15 12 11 16"></polyline>
                           </svg>
                         </span>
 
                         <input
-                          class="sort-form__input"
+                          class="sort-form__input sort-form__input--lime"
                           id="max"
                           name="max"
                           type="number"

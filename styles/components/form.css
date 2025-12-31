@@ -121,7 +121,8 @@
 }
 
 .sort-form__input::placeholder {
-  color: color-mix(in oklab, var(--c-muted), white 10%);
+  color: color-mix(in oklab, var(--c-muted), black 30%);
+  opacity: 1;
 }
 
 .sort-form__control .sort-form__input {
@@ -225,4 +226,15 @@
 
 .sort-form__label--lime .sort-form__label-icon {
   color: currentColor;
+}
+
+.sort-form__input--lime {
+  color: var(--c-lime);
+  caret-color: var(--c-lime);
+}
+
+.sort-form__input--lime:focus {
+  border-color: var(--c-lime);
+
+  box-shadow: 0 0 15px color-mix(in oklab, var(--c-lime), transparent 60%);
 }

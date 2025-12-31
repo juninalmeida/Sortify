@@ -218,3 +218,11 @@
 .sort-form__input {
   caret-color: var(--c-cyan);
 }
+
+.sort-form__label--lime {
+  color: color-mix(in oklab, var(--c-lime), white 15%);
+}
+
+.sort-form__label--lime .sort-form__label-icon {
+  color: currentColor;
+}

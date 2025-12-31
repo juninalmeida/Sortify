@@ -1,14 +1,37 @@
-/* styles/components/results.css */
 .results {
   margin-top: var(--space-4);
+
+  padding-top: var(--space-3);
+
   position: relative;
+
+  border-top: 2px dashed var(--c-surface-2);
+}
+
+.results__label {
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: var(--c-bg);
+  padding: 0 0.5rem;
+
+  font-family: var(--ff-base);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--c-muted);
+
+  font-weight: 600;
+
+  z-index: 1;
 }
 
 .results__screen {
   position: relative;
   overflow: hidden;
 
-  /* Tamanho Mínimo para impor presença (como no design) */
   min-height: clamp(8rem, 6rem + 10vw, 12rem);
 
   display: flex;
@@ -16,40 +39,40 @@
   justify-content: center;
   text-align: center;
 
-  /* Fundo escuro profundo */
   background-color: color-mix(in oklab, black, var(--c-bg) 40%);
   border: 1px solid color-mix(in oklab, var(--c-surface-2), black 20%);
   border-radius: var(--radius-2);
 
-  /* Sombra Interna Profunda (O "buraco" da tela) */
   box-shadow: inset 0 0 2rem black;
 }
 
-/* O Grid Cyberpunk (A mágica visual) */
 .results__screen::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.15; /* Bem sutil */
 
-  /* Cria os quadradinhos do grid usando gradientes */
-  background-image: linear-gradient(var(--c-cyan) 1px, transparent 1px),
-    linear-gradient(90deg, var(--c-cyan) 1px, transparent 1px);
+  opacity: 0.1;
+
+  background-image: linear-gradient(
+      color-mix(in oklab, var(--c-cyan), transparent 70%) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--c-cyan), transparent 70%) 1px,
+      transparent 1px
+    );
+
   background-size: 20px 20px;
 
-  /* Máscara para o grid sumir nas bordas (Vignette suave) */
-  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(
-    circle at center,
-    black 40%,
-    transparent 100%
-  );
+  mask-image: none;
+  -webkit-mask-image: none;
 }
 
 .results__content {
   position: relative;
-  z-index: 2; /* Fica acima do grid */
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,27 +80,32 @@
 }
 
 .results__placeholder {
+  display: block;
   font-family: var(--ff-pixel);
   font-size: clamp(2.5rem, 2rem + 3vw, 4rem);
   line-height: 1;
 
-  /* Cor escura (desligado/apagado) */
   color: color-mix(in oklab, var(--c-surface-2), black 10%);
 
-  /* Texto não selecionável */
   user-select: none;
+  transition: color 0.3s ease;
+}
+
+.results__screen:hover .results__placeholder {
+  color: var(--c-surface-2);
 }
 
 .results__status {
-  margin: 0;
+  display: block;
   font-family: var(--ff-base);
-  font-size: clamp(0.7rem, 0.6rem + 0.3vw, 0.85rem);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
 
-  /* Efeito de texto piscando */
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+
   color: color-mix(in oklab, var(--c-fuchsia), transparent 50%);
-  animation: pulse 2s infinite ease-in-out;
+
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @keyframes pulse {

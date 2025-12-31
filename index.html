@@ -211,14 +211,38 @@
                   </div>
 
                   <div class="toggle">
-                    <input
-                      class="toggle__input"
-                      id="unique"
-                      name="unique"
-                      type="checkbox"
-                    />
-                    <label class="toggle__label" for="unique">
+                    <span class="toggle__info">
+                      <span class="toggle__icon" aria-hidden="true">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="m2 9 3-3 3 3"></path>
+                          <path d="M13 18H7a2 2 0 0 1-2-2V6"></path>
+                          <path d="m22 15-3 3-3-3"></path>
+                          <path d="M11 6h6a2 2 0 0 1 2 2v10"></path>
+                        </svg>
+                      </span>
                       Não repetir números
+                    </span>
+
+                    <label class="toggle__switch" for="unique">
+                      <input
+                        class="toggle__input"
+                        id="unique"
+                        name="unique"
+                        type="checkbox"
+                      />
+                      <div class="toggle__track">
+                        <div class="toggle__knob"></div>
+                      </div>
                     </label>
                   </div>
 

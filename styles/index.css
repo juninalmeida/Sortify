@@ -1,4 +1,5 @@
 @import url("./global.css");
+@import url("./components/loader.css");
 @import url("./app.css");
 @import url("./components/arcade.css");
 @import url("./components/form.css");

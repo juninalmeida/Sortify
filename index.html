@@ -15,6 +15,23 @@
     <title>Sortify</title>
   </head>
   <body class="page">
+    <div class="loader" id="app-loader" aria-hidden="false">
+      <div class="loader__scene">
+        <div class="loader__block" id="loader-block">?</div>
+        <div class="loader__hero"></div>
+      </div>
+
+      <div class="loader__status">
+        <div class="loader__text">
+          <span>Loading System...</span>
+          <span id="loader-percent">0%</span>
+        </div>
+        <div class="loader__bar-box">
+          <div class="loader__bar-fill" id="loader-bar"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="page__background" aria-hidden="true">
       <div
         data-us-project="ILgOO23w4wEyPQOKyLO4"

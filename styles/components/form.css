@@ -17,16 +17,33 @@
 }
 
 .sort-form__label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.25rem;
+
   font-family: var(--ff-base);
-  font-size: clamp(0.75rem, 0.7rem + 0.3vw, 0.95rem);
-  letter-spacing: 0.06em;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  color: color-mix(in oklab, var(--c-fuchsia), white 10%);
+  letter-spacing: 0.1em;
+
+  color: color-mix(in oklab, var(--c-fuchsia), white 15%);
+}
+
+.sort-form__label-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 0.85em;
+  height: 0.85em;
+  color: currentColor;
+  opacity: 0.8;
 }
 
 .sort-form__label-prefix {
-  margin-right: clamp(0.25rem, 0.2rem + 0.2vw, 0.4rem);
-  color: color-mix(in oklab, var(--c-fuchsia), black 15%);
+  display: none;
 }
 
 .sort-form__hint {
@@ -36,20 +53,9 @@
 }
 
 .sort-form__control {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-
-  padding: clamp(0.75rem, 0.65rem + 0.6vw, 1rem);
-  border-radius: var(--radius-1);
-
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--c-bg), white 5%),
-    var(--c-bg)
-  );
-
-  border: 1px solid color-mix(in oklab, var(--c-cyan), black 70%);
+  position: relative;
+  display: block;
+  width: 100%;
 }
 
 .sort-form__control:focus-within {
@@ -58,36 +64,60 @@
 }
 
 .sort-form__icon {
-  inline-size: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
-  aspect-ratio: 1 / 1;
-  border-radius: clamp(0.35rem, 0.3rem + 0.25vw, 0.55rem);
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
 
-  background: color-mix(in oklab, var(--c-surface-2), black 20%);
-  border: 1px solid color-mix(in oklab, var(--c-muted), black 55%);
+  color: var(--c-muted);
 
+  width: 1.25rem;
+  height: 1.25rem;
+  pointer-events: none;
+
+  background: none;
+  border: none;
+  padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--c-cyan);
 }
 
 .sort-form__input {
-  inline-size: 100%;
-  flex: 1;
+  width: 100%;
+  display: block;
 
-  background: transparent;
-  border: 0;
+  font-family: var(--ff-pixel);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
 
-  font-family: var(--ff-base);
-  font-size: clamp(0.95rem, 0.9rem + 0.4vw, 1.15rem);
-  color: var(--c-text);
+  padding: 1rem;
+  padding-left: 3rem;
 
-  padding: 0;
-  margin: 0;
+  background-color: color-mix(in oklab, var(--c-surface), black 40%);
+  border: 2px solid color-mix(in oklab, var(--c-surface-2), white 5%);
+  border-radius: var(--radius-1);
+
+  color: var(--c-cyan);
+  text-align: right;
+
+  transition: all 0.2s ease;
 }
 
 .sort-form__input:focus {
   outline: none;
+  border-color: var(--c-cyan);
+
+  box-shadow: 0 0 15px color-mix(in oklab, var(--c-cyan), transparent 60%);
+}
+
+.sort-form__input::-webkit-outer-spin-button,
+.sort-form__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sort-form__input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .sort-form__input::placeholder {

@@ -73,10 +73,15 @@
 .results__content {
   position: relative;
   z-index: 2;
+
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--space-2);
+
+  width: 100%;
+  padding-inline: var(--space-2);
 }
 
 .results__placeholder {
@@ -122,6 +127,11 @@
   font-family: var(--ff-pixel);
   font-size: 1.5rem;
   color: var(--c-lime);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
 
   animation: pop-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }

@@ -1,0 +1,142 @@
+/* --- MODAL SYSTEM (REMASTERED) --- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Fundo mais sutil, menos "bloqueado" */
+  background-color: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(4px);
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  position: relative;
+  width: min(90%, 420px);
+  
+  /* Fundo escuro com leve transparência */
+  background-color: color-mix(in oklab, var(--c-surface), black 30%);
+  
+  /* Borda dupla para dar profundidade */
+  border: 2px solid var(--c-fuchsia);
+  outline: 1px solid rgba(0, 0, 0, 0.5);
+  outline-offset: -4px;
+  
+  border-radius: var(--radius-1);
+  
+  /* Sombra mais contida e elegante */
+  box-shadow: 
+    0 10px 40px -10px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+    
+  padding: var(--space-4);
+  text-align: center;
+  overflow: hidden; /* Importante para as scanlines */
+
+  /* Começa "fechado" para animação de TV */
+  transform: scaleY(0.1) scaleX(0.5);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Efeito de Scanline (Linhas de TV antiga) */
+.modal-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 3px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  opacity: 0.6;
+}
+
+/* O Estado Ativo com Animação de TV */
+.modal-overlay.active .modal-box {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Conteúdo deve ficar acima das scanlines */
+.modal-header,
+.modal-body,
+.modal-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-3);
+  
+  /* Linha separadora neon sutil */
+  border-bottom: 1px dashed color-mix(in oklab, var(--c-fuchsia), transparent 70%);
+  padding-bottom: 1rem;
+}
+
+.modal-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 5px var(--c-fuchsia));
+  animation: blink 1s infinite;
+}
+
+.modal-title {
+  font-family: var(--ff-pixel);
+  font-size: 1.1rem;
+  margin: 0;
+  letter-spacing: 0.1em;
+  color: var(--c-fuchsia);
+  text-transform: uppercase;
+  
+  text-shadow: 0 0 10px color-mix(in oklab, var(--c-fuchsia), transparent 60%);
+}
+
+.modal-body {
+  font-family: var(--ff-base);
+  color: var(--c-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+  opacity: 0.9;
+}
+
+/* Botão mais integrado */
+.modal-footer .btn {
+  width: 100%;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-fuchsia);
+  color: var(--c-fuchsia);
+}
+
+.modal-footer .btn:hover {
+  background: var(--c-fuchsia);
+  color: white;
+  box-shadow: 0 0 15px var(--c-fuchsia);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

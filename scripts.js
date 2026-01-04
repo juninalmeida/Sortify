@@ -122,6 +122,9 @@ const Sortify = {
       noRepeat: null,
     },
     resultArea: null,
+
+    modal: null,
+    modalMsg: null,
   },
 
   init() {
@@ -131,11 +134,16 @@ const Sortify = {
 
   cacheDom() {
     this.elements.form = document.querySelector(".sort-form");
+
     this.elements.inputs.amount = document.getElementById("quantity");
     this.elements.inputs.min = document.getElementById("min");
     this.elements.inputs.max = document.getElementById("max");
     this.elements.inputs.noRepeat = document.getElementById("unique");
+
     this.elements.resultArea = document.querySelector(".results__content");
+
+    this.elements.modal = document.getElementById("custom-alert");
+    this.elements.modalMsg = document.getElementById("alert-msg");
   },
 
   bindEvents() {
@@ -143,7 +151,6 @@ const Sortify = {
 
     this.elements.form.addEventListener("submit", (event) => {
       event.preventDefault();
-
       this.handleSubmit();
     });
 
@@ -152,6 +159,7 @@ const Sortify = {
       this.elements.inputs.min,
       this.elements.inputs.max,
     ];
+
     inputsNumericos.forEach((input) => {
       input.addEventListener("input", (event) => {
         this.sanitizeInput(event.target);
@@ -161,6 +169,7 @@ const Sortify = {
 
   handleSubmit() {
     this.updateState();
+
     if (!this.validate()) return;
 
     this.draw();
@@ -179,25 +188,48 @@ const Sortify = {
     const { amount, min, max, noRepeat } = this.state;
 
     if (isNaN(amount) || isNaN(min) || isNaN(max)) {
+      this.showAlert(
+        "Por favor, preencha todos os campos com números válidos."
+      );
       return false;
     }
 
     if (amount < 1) {
+      this.showAlert("Você precisa sortear pelo menos 1 número.");
       return false;
     }
 
     if (min >= max) {
+      this.showAlert(
+        "O valor 'Mínimo' deve ser estritamente menor que o 'Máximo'."
+      );
       return false;
     }
 
     if (noRepeat) {
       const totalAvailable = max - min + 1;
       if (amount > totalAvailable) {
+        this.showAlert(
+          `Erro Matemático: Você pediu ${amount} números únicos, mas o intervalo ${min}-${max} só possui ${totalAvailable} opções disponíveis.`
+        );
         return false;
       }
     }
 
     return true;
+  },
+
+  showAlert(message, type = "error") {
+    this.elements.modalMsg.innerText = message;
+    this.elements.modal.classList.add("active");
+  },
+
+  closeAlert() {
+    this.elements.modal.classList.remove("active");
+  },
+
+  sanitizeInput(input) {
+    input.value = input.value.replace(/\D/g, "");
   },
 
   draw() {
@@ -208,7 +240,6 @@ const Sortify = {
     if (noRepeat) {
       while (this.state.results.length < amount) {
         const num = this.randomNumber(min, max);
-
         if (!this.state.results.includes(num)) {
           this.state.results.push(num);
         }
@@ -233,17 +264,14 @@ const Sortify = {
 
     resultArea.innerHTML = "";
 
-    results.forEach((num) => {
+    results.forEach((num, index) => {
       const resultItem = document.createElement("div");
       resultItem.classList.add("result-value");
       resultItem.innerText = num;
+      resultItem.style.animationDelay = `${index * 200}ms`;
 
       resultArea.appendChild(resultItem);
     });
-  },
-
-  sanitizeInput(input) {
-    input.value = input.value.replace(/\D/g, "");
   },
 };
 

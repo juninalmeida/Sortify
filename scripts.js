@@ -146,6 +146,17 @@ const Sortify = {
 
       this.handleSubmit();
     });
+
+    const inputsNumericos = [
+      this.elements.inputs.amount,
+      this.elements.inputs.min,
+      this.elements.inputs.max,
+    ];
+    inputsNumericos.forEach((input) => {
+      input.addEventListener("input", (event) => {
+        this.sanitizeInput(event.target);
+      });
+    });
   },
 
   handleSubmit() {
@@ -229,6 +240,10 @@ const Sortify = {
 
       resultArea.appendChild(resultItem);
     });
+  },
+
+  sanitizeInput(input) {
+    input.value = input.value.replace(/\D/g, "");
   },
 };
 

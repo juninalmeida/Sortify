@@ -28,6 +28,7 @@
 </div>
 
 ## 📌 Índice
+
 - [Sobre o Projeto](#sobre-o-projeto)
 - [Demo](#demo)
 - [Funcionalidades](#funcionalidades)
@@ -45,9 +46,11 @@
 - [Autor](#autor)
 
 ## 💡 Sobre o Projeto
+
 Sortify é um sorteador de números com tema arcade que permite configurar quantidade, intervalo e modo sem repetição. O objetivo é praticar lógica de sorteio, validações matemáticas e construção de uma interface com identidade visual forte usando apenas HTML, CSS e JavaScript.
 
 Este projeto demonstra tecnicamente:
+
 - 🎯 Organização de estado e fluxo de eventos (init, bind, render).
 - 🎲 Lógica de sorteio com regras consistentes e validações robustas.
 - ✨ UI rica em microinterações (glitch, scanlines, loader, efeitos neon).
@@ -55,15 +58,14 @@ Este projeto demonstra tecnicamente:
 
 Foco em habilidades: DOM, validação de dados, animações CSS, acessibilidade e arquitetura modular.
 
-## 🎬 Demo
-**Deploy:** Em breve
-
 **Preview da interface:**
 
 ![Preview da interface Sortify](./assets/sortify-preview.svg)
 
 ## ✨ Funcionalidades
+
 ### Core Features
+
 - ✅ 🎲 Sorteio de múltiplos números com intervalo configurável.
 - ✅ 🎛️ Controle de QTD, mínimo e máximo em tempo real.
 - ✅ 🔁 Opção de sorteio sem repetição.
@@ -71,6 +73,7 @@ Foco em habilidades: DOM, validação de dados, animações CSS, acessibilidade 
 - ✅ 🧩 Loader inicial com progresso e feedback visual.
 
 ### Validações e UX
+
 - ✅ 🧠 Validação de números obrigatórios e consistentes.
 - ✅ 🧮 Bloqueio de combinações impossíveis no modo único.
 - ✅ ⛔ Modal de erro customizado para mensagens claras.
@@ -78,21 +81,27 @@ Foco em habilidades: DOM, validação de dados, animações CSS, acessibilidade 
 - ✅ ♿ Feedback acessível com `aria-live` e labels semânticos.
 
 ## 🚀 Tecnologias
+
 ### Frontend
+
 - HTML5
 - CSS3 (Custom Properties, Animations, `color-mix`)
 - JavaScript ES6+ (Vanilla)
 
 ### Backend
+
 - Não se aplica (projeto 100% frontend).
 
 ### Ferramentas
+
 - Google Fonts (Press Start 2P, Share Tech Mono)
 - Unicorn Studio (background animado)
 - Git/GitHub
 
 ## 🧠 Conceitos Aplicados
+
 ### JavaScript
+
 - ✅ Manipulação de DOM e cache de elementos.
 - ✅ Gerenciamento de estado local com objeto `state`.
 - ✅ Sanitização e validação de inputs.
@@ -102,6 +111,7 @@ Foco em habilidades: DOM, validação de dados, animações CSS, acessibilidade 
 - ✅ Acessibilidade: feedback em `aria-live`.
 
 ### CSS
+
 - ✅ Tokens com CSS Custom Properties.
 - ✅ Tipografia fluida via `clamp()`.
 - ✅ Layouts com Flexbox e Grid.
@@ -111,14 +121,18 @@ Foco em habilidades: DOM, validação de dados, animações CSS, acessibilidade 
 - ✅ Componentização por arquivos e escopo.
 
 ### Arquitetura
+
 - ✅ Separação de responsabilidades (Loader vs Sorteio).
 - ✅ Organização modular de CSS (`global`, `app`, `components`).
 - ✅ Convenção de classes BEM-like para previsibilidade.
 - ✅ Componentes desacoplados (modal, toggle, resultados).
 
 <a id="destaques-tecnicos"></a>
+
 ## 🎯 Destaques Técnicos
+
 ### 1) Loader com progresso sincronizado
+
 ```javascript
 const LoadingSystem = {
   // Estado central do loader
@@ -142,12 +156,15 @@ const LoadingSystem = {
   },
 };
 ```
+
 **Por que essa abordagem?** Centralizar estado e elementos evita duplicação e garante sincronismo entre barra, porcentagem e animação.
+
 - Reduz acoplamento entre UI e lógica.
 - Facilita ajustes de tempo (durations) em um único lugar.
 - Mantém as animações consistentes mesmo em devices mais lentos.
 
 ### 2) Validação de regras do sorteio
+
 ```javascript
 validate() {
   const { amount, min, max, noRepeat } = this.state;
@@ -184,12 +201,15 @@ validate() {
   return true;
 }
 ```
+
 **Como funciona?** As regras são avaliadas em sequência e qualquer falha interrompe o fluxo, priorizando feedback imediato ao usuário.
+
 - Evita estados inconsistentes antes do sorteio.
 - Garante coerência matemática no modo “sem repetição”.
 - Mantém as mensagens de erro claras e contextualizadas.
 
 ### 3) Sorteio com efeito glitch e renderização final
+
 ```javascript
 draw() {
   const { amount, min, max, noRepeat } = this.state;
@@ -248,12 +268,15 @@ draw() {
   }, 1000);
 }
 ```
+
 **Por que essa abordagem?** Separa a “ilusão visual” do sorteio real, garantindo clareza e performance.
+
 - Placeholder + glitch geram expectativa antes do resultado final.
 - Evita reflows desnecessários ao calcular tudo antes de renderizar.
 - Entrega feedback visual mesmo para sorteios rápidos.
 
 ### 4) Design tokens e tipografia fluida
+
 ```css
 :root {
   /* Fontes principais */
@@ -277,12 +300,15 @@ draw() {
   --c-cyan: hsl(188 89% 55%);
 }
 ```
+
 **Como funciona?** Tokens centralizam decisões visuais e evitam valores mágicos espalhados.
+
 - Escalas fluidas mantêm legibilidade em qualquer largura de tela.
 - Facilita manutenção e ajustes de tema.
 - Reforça consistência em todos os componentes.
 
 ### 5) Modal com glassmorphism e foco no alerta
+
 ```css
 .modal-overlay {
   position: fixed;
@@ -319,12 +345,15 @@ draw() {
   opacity: 1;
 }
 ```
+
 **Por que essa abordagem?** O overlay garante foco total no alerta sem perder a estética do layout.
+
 - Glassmorphism reforça a identidade futurista.
 - Transições suaves evitam mudanças abruptas.
 - Mantém a mensagem centralizada e fácil de ler.
 
 ## 📱 Responsividade
+
 A base é mobile-first: o layout nasce para telas menores e cresce com espaçamentos fluidos. A tipografia usa `clamp()` para manter legibilidade sem depender de dezenas de media queries. Abaixo está um **exemplo de breakpoints sugeridos** caso queira ajustar o layout para telas maiores.
 
 ```css
@@ -351,10 +380,13 @@ A base é mobile-first: o layout nasce para telas menores e cresce com espaçame
   }
 }
 ```
+
 **Abordagem:** poucos breakpoints, muita fluidez. O container já usa `min(34rem, 92vw)` para evitar overflow e manter o conteúdo confortável.
 
 ## 🎨 Design System
+
 ### Paleta de cores
+
 ```css
 :root {
   --c-bg: hsl(222 47% 6%);
@@ -370,23 +402,26 @@ A base é mobile-first: o layout nasce para telas menores e cresce com espaçame
 ```
 
 ### Tokens principais
-| Categoria | Token | Valor | Uso |
-| --- | --- | --- | --- |
-| Espaçamento | `--space-1` | `clamp(0.5rem, 0.35rem + 0.6vw, 0.85rem)` | gaps menores |
-| Espaçamento | `--space-2` | `clamp(0.75rem, 0.55rem + 0.8vw, 1.15rem)` | blocos e botões |
-| Espaçamento | `--space-3` | `clamp(1rem, 0.75rem + 1vw, 1.5rem)` | seções principais |
-| Espaçamento | `--space-4` | `clamp(1.25rem, 1rem + 1.2vw, 2rem)` | respiro macro |
-| Raio | `--radius-1` | `clamp(0.6rem, 0.5rem + 0.4vw, 0.9rem)` | inputs e toggles |
-| Raio | `--radius-2` | `clamp(0.9rem, 0.75rem + 0.6vw, 1.25rem)` | painéis e botões |
-| Sombra | `--shadow-1` | `0 0.75rem 2.5rem hsl(0 0% 0% / 0.55)` | elevação |
-| Layout | `--container-max` | `min(34rem, 92vw)` | largura máxima |
+
+| Categoria   | Token             | Valor                                      | Uso               |
+| ----------- | ----------------- | ------------------------------------------ | ----------------- |
+| Espaçamento | `--space-1`       | `clamp(0.5rem, 0.35rem + 0.6vw, 0.85rem)`  | gaps menores      |
+| Espaçamento | `--space-2`       | `clamp(0.75rem, 0.55rem + 0.8vw, 1.15rem)` | blocos e botões   |
+| Espaçamento | `--space-3`       | `clamp(1rem, 0.75rem + 1vw, 1.5rem)`       | seções principais |
+| Espaçamento | `--space-4`       | `clamp(1.25rem, 1rem + 1.2vw, 2rem)`       | respiro macro     |
+| Raio        | `--radius-1`      | `clamp(0.6rem, 0.5rem + 0.4vw, 0.9rem)`    | inputs e toggles  |
+| Raio        | `--radius-2`      | `clamp(0.9rem, 0.75rem + 0.6vw, 1.25rem)`  | painéis e botões  |
+| Sombra      | `--shadow-1`      | `0 0.75rem 2.5rem hsl(0 0% 0% / 0.55)`     | elevação          |
+| Layout      | `--container-max` | `min(34rem, 92vw)`                         | largura máxima    |
 
 ### Efeitos especiais
+
 - **Glassmorphism:** `backdrop-filter` no cabinet e no modal para profundidade.
 - **Gradientes neon:** marca e botões com glow e text shadow.
 - **CRT/scanlines:** textura de tela simulada em `.results__screen`.
 
 ## 📁 Estrutura do Projeto
+
 ```text
 .
 ├── assets/ 🖼️
@@ -407,16 +442,21 @@ A base é mobile-first: o layout nasce para telas menores e cresce com espaçame
 │       └── loader.css
 └── README.md 📘
 ```
+
 **Organização modular:** `styles/index.css` importa os módulos e cada componente possui seu arquivo dedicado para facilitar manutenção e evolução.
 
 <a id="instalacao"></a>
+
 ## 🔧 Instalação
+
 **Pré-requisitos:**
+
 - Git para clonar o repositório.
 - Navegador moderno (Chrome, Firefox, Edge).
 - Python 3 ou PHP para servidor local (opcional).
 
 **Passos:**
+
 ```bash
 # 1) Clone o repositório
 git clone <URL_DO_REPO>
@@ -432,10 +472,11 @@ php -S localhost:5173
 ```
 
 **Deploy:**
+
 - **GitHub Pages:** Settings → Pages → Deploy from branch → `main` / root.
-- **Vercel:** Importar repositório → Framework “Other” → Deploy.
 
 ## 📖 Como Usar
+
 1. Defina a **Quantidade (QTD)** de números.
 2. Configure **Min (de)** e **Max (até)**.
 3. Ative **Não repetir números** caso precise de resultados únicos.
@@ -444,34 +485,17 @@ php -S localhost:5173
 
 ![Fluxo de uso](./assets/sortify-preview.svg)
 
-## 🗺️ Roadmap
-### v1.1
-- [ ] Histórico de sorteios com `localStorage`.
-- [ ] Exportação de resultados (CSV).
-- [ ] Seed opcional para sorteios reproduzíveis.
-- [ ] Melhorias de acessibilidade no modal (foco e teclado).
-
-### v2.0
-- [ ] Sorteio por listas (nomes/itens).
-- [ ] Temas customizáveis com troca de paleta.
-- [ ] Compartilhamento por link com parâmetros.
-- [ ] Painel de estatísticas e frequência.
-
 ## 🎓 Aprendizados
+
 - **JavaScript:** organização de estado, validação e renderização dinâmica.
 - **CSS:** tokens, animações complexas e efeitos visuais temáticos.
 - **UX/UI:** feedback contínuo, consistência visual e legibilidade.
 - **Acessibilidade:** boas práticas de aria e hierarquia semântica.
 
 <a id="contribuicoes"></a>
-## 🤝 Contribuições
-1. Faça um fork do projeto.
-2. Crie uma branch para sua feature (`git checkout -b feature/minha-feature`).
-3. Commit suas mudanças (`git commit -m "feat: minha feature"`).
-4. Envie para o repositório remoto (`git push origin feature/minha-feature`).
-5. Abra um Pull Request explicando a melhoria.
 
 ## 👨‍💻 Autor
+
 <div align="center">
   <img
     src="https://github.com/juninalmeida.png"

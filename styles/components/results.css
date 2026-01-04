@@ -136,3 +136,89 @@
     transform: scale(1);
   }
 }
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.3) 50%
+  );
+  background-size: 100% 4px;
+  animation: scanline-scroll 0.2s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.is-rolling .scanlines {
+  opacity: 1;
+}
+
+@keyframes scanline-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+.results__screen.is-rolling {
+  animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+
+  border-color: var(--c-lime);
+  box-shadow: 0 0 20px color-mix(in oklab, var(--c-lime), transparent 70%);
+}
+
+.is-rolling .result-value {
+  color: var(--c-text);
+  text-shadow: 2px 0 var(--c-fuchsia), -2px 0 var(--c-lime);
+  animation: glitch-text 0.1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-skew {
+  0% {
+    transform: skew(0deg);
+  }
+  20% {
+    transform: skew(-2deg);
+  }
+  40% {
+    transform: skew(2deg);
+  }
+  60% {
+    transform: skew(-0.5deg);
+  }
+  80% {
+    transform: skew(0.5deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+@keyframes glitch-text {
+  0% {
+    transform: translate(1px, 0);
+  }
+  100% {
+    transform: translate(-1px, 0);
+  }
+}
+
+.flash-effect {
+  animation: flash-bang 0.5s ease-out;
+}
+
+@keyframes flash-bang {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: var(--c-surface);
+  }
+}

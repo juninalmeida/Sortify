@@ -234,24 +234,60 @@ const Sortify = {
 
   draw() {
     const { amount, min, max, noRepeat } = this.state;
+    const { resultArea } = this.elements;
+    const screen = document.querySelector(".results__screen");
 
+    resultArea.innerHTML = "";
     this.state.results = [];
 
+    for (let i = 0; i < amount; i++) {
+      const placeholder = document.createElement("div");
+      placeholder.classList.add("result-value");
+      placeholder.innerText = "--";
+      resultArea.appendChild(placeholder);
+    }
+
+    screen.classList.add("is-rolling");
+
+    if (!screen.querySelector(".scanlines")) {
+      const scan = document.createElement("div");
+      scan.classList.add("scanlines");
+      screen.appendChild(scan);
+    }
+
+    const chaosInterval = setInterval(() => {
+      const slots = resultArea.querySelectorAll(".result-value");
+      const chars = "0123456789X$#@&%";
+
+      slots.forEach((slot) => {
+        slot.innerText =
+          chars[Math.floor(Math.random() * chars.length)] +
+          chars[Math.floor(Math.random() * chars.length)];
+      });
+    }, 50);
+
+    const finalNumbers = [];
     if (noRepeat) {
-      while (this.state.results.length < amount) {
+      while (finalNumbers.length < amount) {
         const num = this.randomNumber(min, max);
-        if (!this.state.results.includes(num)) {
-          this.state.results.push(num);
-        }
+        if (!finalNumbers.includes(num)) finalNumbers.push(num);
       }
     } else {
       for (let i = 0; i < amount; i++) {
-        const num = this.randomNumber(min, max);
-        this.state.results.push(num);
+        finalNumbers.push(this.randomNumber(min, max));
       }
     }
+    this.state.results = finalNumbers;
 
-    this.render();
+    setTimeout(() => {
+      clearInterval(chaosInterval);
+      screen.classList.remove("is-rolling");
+      screen.classList.add("flash-effect");
+
+      setTimeout(() => screen.classList.remove("flash-effect"), 500);
+
+      this.render();
+    }, 1000);
   },
 
   randomNumber(min, max) {

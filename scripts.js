@@ -118,7 +118,6 @@ const Sortify = {
   },
 
   init() {
-    console.log("Iniciando Sortify...");
     this.cacheDom();
     this.bindEvents();
   },
@@ -132,12 +131,22 @@ const Sortify = {
     this.elements.inputs.noRepeat = document.getElementById("unique");
 
     this.elements.resultArea = document.querySelector(".results__content");
-
-    console.log(this.elements);
   },
 
   bindEvents() {
-    console.log("Eventos ainda não configurados.");
+    if (!this.elements.form) return;
+
+    this.elements.form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      this.handleSubmit();
+    });
+  },
+
+  handleSubmit() {
+    console.log("Interceptado! O JS agora controla o formulário.");
+
+    console.log("Modo único ativado?", this.elements.inputs.noRepeat.checked);
   },
 };
 

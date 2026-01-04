@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="Sortify preview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1020" />
+      <stop offset="1" stop-color="#111827" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.12" />
+      <stop offset="1" stop-color="#0b1020" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="btn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d946ef" />
+      <stop offset="1" stop-color="#9333ea" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="700" fill="url(#bg)" />
+  <rect width="1200" height="700" fill="url(#glow)" />
+
+  <rect x="260" y="80" width="680" height="540" rx="28" fill="#0f172a" stroke="#1f2937" stroke-width="3" />
+  <rect x="285" y="105" width="630" height="490" rx="22" fill="#0b1020" stroke="#22d3ee" stroke-opacity="0.2" />
+
+  <rect x="315" y="135" width="570" height="70" rx="16" fill="#111827" stroke="#1f2937" />
+  <text x="350" y="180" font-family="monospace" font-size="28" fill="#d946ef" letter-spacing="2">SORTIFY</text>
+  <text x="350" y="200" font-family="monospace" font-size="12" fill="#22d3ee" letter-spacing="3">SYSTEM READY</text>
+  <circle cx="820" cy="170" r="8" fill="#ef4444" />
+  <circle cx="845" cy="170" r="8" fill="#eab308" />
+  <circle cx="870" cy="170" r="8" fill="#22c55e" />
+
+  <rect x="315" y="225" width="570" height="85" rx="16" fill="#0f172a" stroke="#1f2937" />
+  <text x="340" y="255" font-family="monospace" font-size="12" fill="#d946ef" letter-spacing="2">QUANTIDADE (QTD)</text>
+  <rect x="335" y="265" width="530" height="30" rx="8" fill="#111827" stroke="#1f2937" />
+  <text x="845" y="286" font-family="monospace" font-size="14" fill="#22d3ee" text-anchor="end">01</text>
+
+  <rect x="315" y="325" width="270" height="70" rx="14" fill="#0f172a" stroke="#1f2937" />
+  <rect x="615" y="325" width="270" height="70" rx="14" fill="#0f172a" stroke="#1f2937" />
+  <text x="335" y="352" font-family="monospace" font-size="12" fill="#a3e635" letter-spacing="2">MIN (DE)</text>
+  <text x="635" y="352" font-family="monospace" font-size="12" fill="#a3e635" letter-spacing="2">MAX (ATE)</text>
+  <text x="565" y="372" font-family="monospace" font-size="14" fill="#a3e635" text-anchor="end">01</text>
+  <text x="865" y="372" font-family="monospace" font-size="14" fill="#a3e635" text-anchor="end">100</text>
+
+  <rect x="315" y="410" width="570" height="50" rx="14" fill="#111827" stroke="#1f2937" />
+  <text x="340" y="440" font-family="monospace" font-size="12" fill="#d946ef" letter-spacing="2">NAO REPETIR NUMEROS</text>
+  <rect x="800" y="420" width="70" height="30" rx="15" fill="#a3e635" />
+  <circle cx="845" cy="435" r="12" fill="#ffffff" />
+
+  <rect x="315" y="475" width="570" height="60" rx="16" fill="url(#btn)" />
+  <text x="600" y="510" font-family="monospace" font-size="16" fill="#ffffff" text-anchor="middle" letter-spacing="2">INSERT COIN TO SORT</text>
+
+  <rect x="315" y="550" width="570" height="70" rx="16" fill="#0b1020" stroke="#1f2937" />
+  <text x="600" y="590" font-family="monospace" font-size="28" fill="#22d3ee" text-anchor="middle">00 07 42</text>
+</svg>

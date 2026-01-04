@@ -150,10 +150,9 @@ const Sortify = {
 
   handleSubmit() {
     this.updateState();
-
     if (!this.validate()) return;
 
-    console.log("Validação aprovada! Estado atual:", this.state);
+    this.draw();
   },
 
   updateState() {
@@ -169,31 +168,67 @@ const Sortify = {
     const { amount, min, max, noRepeat } = this.state;
 
     if (isNaN(amount) || isNaN(min) || isNaN(max)) {
-      alert("Por favor, insira apenas números válidos.");
       return false;
     }
 
     if (amount < 1) {
-      alert("Você precisa sortear pelo menos 1 número.");
       return false;
     }
 
     if (min >= max) {
-      alert("O valor 'Mínimo' deve ser menor que o 'Máximo'.");
       return false;
     }
 
     if (noRepeat) {
       const totalAvailable = max - min + 1;
       if (amount > totalAvailable) {
-        alert(
-          `Erro: Você pediu ${amount} números únicos, mas o intervalo ${min}-${max} só possui ${totalAvailable} números disponíveis.`
-        );
         return false;
       }
     }
 
     return true;
+  },
+
+  draw() {
+    const { amount, min, max, noRepeat } = this.state;
+
+    this.state.results = [];
+
+    if (noRepeat) {
+      while (this.state.results.length < amount) {
+        const num = this.randomNumber(min, max);
+
+        if (!this.state.results.includes(num)) {
+          this.state.results.push(num);
+        }
+      }
+    } else {
+      for (let i = 0; i < amount; i++) {
+        const num = this.randomNumber(min, max);
+        this.state.results.push(num);
+      }
+    }
+
+    this.render();
+  },
+
+  randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  },
+
+  render() {
+    const { results } = this.state;
+    const { resultArea } = this.elements;
+
+    resultArea.innerHTML = "";
+
+    results.forEach((num) => {
+      const resultItem = document.createElement("div");
+      resultItem.classList.add("result-value");
+      resultItem.innerText = num;
+
+      resultArea.appendChild(resultItem);
+    });
   },
 };
 

@@ -117,3 +117,22 @@
     opacity: 1;
   }
 }
+
+.result-value {
+  font-family: var(--ff-pixel);
+  font-size: 1.5rem;
+  color: var(--c-lime);
+
+  animation: pop-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

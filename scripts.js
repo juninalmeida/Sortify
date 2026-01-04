@@ -103,3 +103,44 @@ const LoadingSystem = {
 document.addEventListener("DOMContentLoaded", () => {
   LoadingSystem.init();
 });
+
+const Sortify = {
+  elements: {
+    form: null,
+    btnSortear: null,
+    inputs: {
+      amount: null,
+      min: null,
+      max: null,
+      noRepeat: null,
+    },
+    resultArea: null,
+  },
+
+  init() {
+    console.log("Iniciando Sortify...");
+    this.cacheDom();
+    this.bindEvents();
+  },
+
+  cacheDom() {
+    this.elements.form = document.querySelector(".sort-form");
+
+    this.elements.inputs.amount = document.getElementById("quantity");
+    this.elements.inputs.min = document.getElementById("min");
+    this.elements.inputs.max = document.getElementById("max");
+    this.elements.inputs.noRepeat = document.getElementById("unique");
+
+    this.elements.resultArea = document.querySelector(".results__content");
+
+    console.log(this.elements);
+  },
+
+  bindEvents() {
+    console.log("Eventos ainda não configurados.");
+  },
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  Sortify.init();
+});

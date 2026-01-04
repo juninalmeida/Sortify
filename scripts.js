@@ -105,6 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const Sortify = {
+  state: {
+    amount: 0,
+    min: 0,
+    max: 0,
+    noRepeat: false,
+  },
+
   elements: {
     form: null,
     btnSortear: null,
@@ -124,12 +131,10 @@ const Sortify = {
 
   cacheDom() {
     this.elements.form = document.querySelector(".sort-form");
-
     this.elements.inputs.amount = document.getElementById("quantity");
     this.elements.inputs.min = document.getElementById("min");
     this.elements.inputs.max = document.getElementById("max");
     this.elements.inputs.noRepeat = document.getElementById("unique");
-
     this.elements.resultArea = document.querySelector(".results__content");
   },
 
@@ -144,9 +149,51 @@ const Sortify = {
   },
 
   handleSubmit() {
-    console.log("Interceptado! O JS agora controla o formulário.");
+    this.updateState();
 
-    console.log("Modo único ativado?", this.elements.inputs.noRepeat.checked);
+    if (!this.validate()) return;
+
+    console.log("Validação aprovada! Estado atual:", this.state);
+  },
+
+  updateState() {
+    const { amount, min, max, noRepeat } = this.elements.inputs;
+
+    this.state.amount = Number(amount.value);
+    this.state.min = Number(min.value);
+    this.state.max = Number(max.value);
+    this.state.noRepeat = noRepeat.checked;
+  },
+
+  validate() {
+    const { amount, min, max, noRepeat } = this.state;
+
+    if (isNaN(amount) || isNaN(min) || isNaN(max)) {
+      alert("Por favor, insira apenas números válidos.");
+      return false;
+    }
+
+    if (amount < 1) {
+      alert("Você precisa sortear pelo menos 1 número.");
+      return false;
+    }
+
+    if (min >= max) {
+      alert("O valor 'Mínimo' deve ser menor que o 'Máximo'.");
+      return false;
+    }
+
+    if (noRepeat) {
+      const totalAvailable = max - min + 1;
+      if (amount > totalAvailable) {
+        alert(
+          `Erro: Você pediu ${amount} números únicos, mas o intervalo ${min}-${max} só possui ${totalAvailable} números disponíveis.`
+        );
+        return false;
+      }
+    }
+
+    return true;
   },
 };
 
